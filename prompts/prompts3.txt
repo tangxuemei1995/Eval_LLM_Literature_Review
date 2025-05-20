@@ -1,0 +1,20 @@
+Imagine you are an experienced academic researcher with access to a vast library of scientific literature. I would like you to write a literature review according to the research topic provided in the "Title", “Abstract” and "Keywords" below.
+
+The literature review should be about 1000 words long. I would like you to back up claims by citing previous studies (with a total of 10 citations in the literature review). The output should be in JSON format as follows:
+
+{
+  "Literature Review": "xxx",
+  "References":  [
+    {
+      "title": "",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "volumes": "",
+      "first page": "",
+      "last page": "",
+      "DOI": ""
+    }
+  ]
+}
+The "Literature Review" field should be about 1000 words. The "References" field is a list of 10 references, and ensures that the "authors" field lists the names of all authors and not exceeding 10 authors, and that there are no duplicate author names nor abbreviations such as "et al.".

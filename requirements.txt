@@ -1,0 +1,4 @@
+openai==1.66.5
+nltk==3.9.1
+rouge-score==0.1.2
+matplotlib==3.5.1

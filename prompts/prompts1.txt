@@ -1,0 +1,16 @@
+Imagine you are an experienced academic researcher with access to a vast library of scientific literature. I would like you to find the 10 studies that are most relevant to the research topic provided in the "Title" and the "Keywords" below.
+Please cite the studies according to the following JSON format. There is no need to provide any explanation before or after the JSON output. Ensure that the "authors" field lists the names of all authors and not exceeding 10 authors, and that there are no duplicate author names nor abbreviations such as "et al.".
+{
+  "References": [
+    {
+      "title": "",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "volumes": "",
+      "first page": "",
+      "last page": "",
+      "DOI": ""
+    }
+  ]
+}

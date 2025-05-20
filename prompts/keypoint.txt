@@ -1,0 +1,7 @@
+Extract the main points from the provided article and present them in the following JSON format:
+{
+"Point[number]": "[content of point]",
+"Point[number]": "[content of point]", 
+}
+IMPORTANT: The number of points should not exceed 10.
+IMPORTANT: Each point should be concise, not exceeding 50 words.

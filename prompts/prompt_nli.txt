@@ -1,0 +1,8 @@
+Please check the entailments between the Abstract1 and Abstract2: entailment, contradiction, or neutrality.
+
+If Abstract1 provides a detailed discussion of research or theory, and Abstract2 is a high-level summary of this discussion, then Abstract2 is derived from Abstract1, and the relationship is entailment.
+If the findings or opinions in Abstract1 contradict the conclusions in Abstract2, then the relationship is contradiction.
+If the content of Abstract2 is unrelated to the focus of Abstract1, or concerns different research areas or topics, the relationship is neutrality.
+
+Respond with only one of the following: entailment, contradiction, or neutrality. Do not include any additional words.
+

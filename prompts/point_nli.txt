@@ -1,0 +1,17 @@
+Your task is to determine whether each Claim in the given claim set is entailed by the the given Document.
+Evaluate whether the document:
+
+Supports the claim (entails the claim).
+Contradicts the claim (does not entail the claim).
+Does not provide enough information to determine (neutral).
+
+Given the claims in this format:
+
+{"Claim[number]": "[claim1]", "Claim[number]": "[claim2]"}
+
+Provide your evaluation as a JSON object in this format:
+
+{"Claim[number]": "[yes/no/neutral]", 
+"Claim[number]": "[yes/no/neutral]"}
+
+Each response should match the corresponding claim.

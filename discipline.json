@@ -1,0 +1,8 @@
+{
+    "Biology": ["ento","nutr","ecolsys","animal","phyto","virology","physiol","biophys","micro","cellbio", "arplant", "genom", "genet","neuro","cancerbio","immunol","pharmtox","pathmechdis","med","vision","clinpsy"],
+    "Mathematics": [ "statistics",  "biodatasci"],
+    "Physics": ["nucl","astro","control","fluid","conmatphys","marine"],
+    "Chemistry": ["chembioeng", "bioeng","biochem", "physchem","anchem"],
+    "Social Science": ["criminol","devpsych","psych", "orgpsych","financial","economics","resource","publhealth","soc", "lawsocsci","polisci","linguistics","anthro"],
+    "Technology": ["matsci","food","energy","earth"]
+}
