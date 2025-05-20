@@ -13,6 +13,7 @@ import openai
 import anthropic
 from dashscope import Generation
 from openai import OpenAI
+
 os.getenv("OPENAI_API_KEY")
 f = open('./prompts/prompts1.txt', 'r', encoding='utf-8')
 system_prompt_1 = f.read().strip()
