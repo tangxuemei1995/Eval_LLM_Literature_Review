@@ -122,7 +122,6 @@ def huggingface_api_format(system_prompt, user_prompt, model_id="meta-llama/Meta
     }
 
 
-    # current_key = random.choice(api_keys="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")
     client = InferenceClient(api_key="your huggingface key")
     try:
         completion = client.chat.completions.create(
@@ -150,9 +149,7 @@ def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-
         { "role": "user", "content": user_prompt}
     ]
    
-    # current_key = random.choice(api_keys)
     client = InferenceClient(api_key="your huggingfacr key")
-    # client = InferenceClient(api_key=current_key)
     try:
         completion = client.chat.completions.create(
             model= model_id, 
@@ -233,7 +230,6 @@ def claude(system_prompt, user_prompt):
 
     text = [block.text for block in message.content]
     return text[0]
-# Please install OpenAI SDK first: `pip3 install openai`
 
 def deepseek(system_prompt, user_prompt):
     client = OpenAI(api_key="your deepseek key", base_url="https://api.deepseek.com")

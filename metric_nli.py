@@ -6,12 +6,9 @@ import json
 import re
 import time
 import csv
-from bing_api import query_bing_return_mkt
-from google_search_api import google_search
 from semantic_scholar import semantic_scholar_search
 from clean_llm_data import clean_references_for_second
-# from evaluate import gpt
-# import litellm
+
 import openai, requests
 
 openai.api_key = ""
@@ -21,7 +18,7 @@ openai.api_key = ""
 def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-3.1-8B-Instruct"):
     
     API_URL = "https://api-inference.huggingface.co/models/" + model_id
-    headers = {"Authorization": f"Bearer hf key"}
+    headers = {"Authorization": f"Bearer key"}
     data = {"inputs": system_prompt + user_prompt}
     response = requests.post(API_URL, headers=headers, json=data)
     return response.json()[0]["generated_text"]
@@ -80,11 +77,6 @@ def compute_nli_score(json_files, model_id):
             '''
             save path for the best candidate
             '''
-            # save_path = file.replace('./clean','./nli_data')
-            # if not os.path.exists('/'.join(save_path.split('/')[0:-1])):
-            #     os.makedirs('/'.join(save_path.split('/')[0:-1]))
-            # "./clean/./llm3/meta-llama_Meta-Llama-3.1-8B-Instruct/data/immunol/Volume 20 (2002)/10.1146_annurev.immunol.20.090501.112049_content.json"
-            # print("#########################################" + file + "##############################################" )
             abstract_file = file.replace("./llm3/" + model_id + "/","")
             abstract = read_json_file(abstract_file)
             abstract = abstract["context"]["ABSTRACT"]
@@ -127,7 +119,6 @@ def compute_nli_score(json_files, model_id):
                         else:
                             result = gpt_4o(system_prompt, user_prompt)
 
-                        # result = gpt_3(system_prompt, user_prompt)
                         
                         result = result
                         with open(save_path, 'w', encoding='utf-8') as f4:
@@ -210,11 +201,6 @@ def compute_nli_abstract_score(json_files, model_id):
             '''
             save path for the best candidate
             '''
-            # save_path = file.replace('./clean','./nli_data')
-            # if not os.path.exists('/'.join(save_path.split('/')[0:-1])):
-            #     os.makedirs('/'.join(save_path.split('/')[0:-1]))
-            # "./clean/./llm3/meta-llama_Meta-Llama-3.1-8B-Instruct/data/immunol/Volume 20 (2002)/10.1146_annurev.immunol.20.090501.112049_content.json"
-            # print("#########################################" + file + "##############################################" )
             abstract_file = file.replace("./t2/" + model_id,"./clean")
             context = read_json_file(abstract_file)
             abstract1 = context["context"]["ABSTRACT"]
@@ -247,18 +233,14 @@ def compute_nli_abstract_score(json_files, model_id):
     
 
 if __name__ == "__main__":
-    # llm = "gpt-4o-new"
-    # llm = "claude"
-    # llm = "Qwen_Qwen2.5-72B-Instruct"
-    # llm = "meta-llama_Llama-3.2-3B-Instruct"\
+
     llm = "deepseek"
 
     topics = [f.name for f in os.scandir("./clean/data") if f.is_dir()]
     model_nli = []
     entail_, contra_, neutr_ = [], [], []
     for t in topics[0:52]:
-        # print(t)
-        # exit()
+
         if t=="arcompsci":
             continue
         
@@ -280,13 +262,10 @@ if __name__ == "__main__":
                 # print(os.path.join(journal_llm_path, subd))
                 if not os.path.exists(os.path.join("./clean", journal_llm_path, subd)):
                         os.makedirs(os.path.join("./clean", journal_llm_path, subd))
-                # json_files = find_json_files(os.path.join("./clean", journal_llm_path, subd))
                 "NLI result path"
                 if not os.path.exists(os.path.join("./NLI_result_new", journal_llm_path, subd)):
                         os.makedirs(os.path.join("./NLI_result_new", journal_llm_path, subd))
 
-                # nli_scores = compute_nli_score(json_files, llm)
-                # print(json_files)
                 entail_scores, contra_scores, neutr_scores = compute_nli_abstract_score(json_files, llm)
             
                 entail_ += entail_scores

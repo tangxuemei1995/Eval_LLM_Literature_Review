@@ -176,7 +176,7 @@ def huggingface_api_format(system_prompt, user_prompt, model_id="meta-llama/Meta
         }
     }
 
-    client = InferenceClient(api_key="hf key")
+    client = InferenceClient(api_key="key")
     try:
         completion = client.chat.completions.create(
             model= model_id, 
@@ -204,7 +204,7 @@ def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-
         { "role": "user", "content": user_prompt}
     ]
   
-    client = InferenceClient(api_key="hf key")
+    client = InferenceClient(api_key="key")
     # client = InferenceClient(api_key=current_key)
     try:
         completion = client.chat.completions.create(

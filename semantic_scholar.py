@@ -54,12 +54,8 @@ def search_information(ids):
 def semantic_scholar_search(title):
    
    out_filepath = "./semantic/" + '_'.join(title.replace('"', '').replace('/', '').replace(':', '').split())
-   # scholar = Scholar(out_filepath)
-   # print("#######################" + title + "find it in semantic scholar##############################")   if len(out_filepath)>255:
    out_filepath = out_filepath[0:255]
-   # if out_filepath == "./semantic/2015_Eligibility_and_Disqualification_Recommendations_for_Competitive_Athletes_with_Cardiovascular_Abnormalities_Task_Force_3_Hypertrophic_Cardiomyopathy,_Arrhythmogenic_Right_Ventricular_Cardiomyopathy_and_Other_Cardiomyopathies,_and_Myocarditis_A_Scientific_Statement_From_the_American_Heart_Association_and_American_College_of_Cardiology":
-   # if len(out_filepath) > 50:
-   #    out_filepath = out_filepath[0:50]
+
    semantic_results, title_results = [] ,{} 
    paper_title_exsit = False 
    if os.path.exists(os.path.join(out_filepath, "semantic.json")):
@@ -123,4 +119,4 @@ def semantic_scholar_search(title):
 
 
 if __name__ == "__main__":
-   # print(semantic_scholar_search(""))
+   print(semantic_scholar_search(""))

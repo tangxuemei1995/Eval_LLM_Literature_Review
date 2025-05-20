@@ -5,8 +5,7 @@ import json
 import re
 import time
 import csv
-from bing_api import query_bing_return_mkt
-from google_search_api import google_search
+
 from semantic_scholar import semantic_scholar_search
 from clean_llm_data import clean_references_for_second
 # from evaluate import gpt
@@ -22,7 +21,7 @@ from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-3.1-8B-Instruct"):
     
     API_URL = "https://api-inference.huggingface.co/models/" + model_id
-    headers = {"Authorization": f"Bearer hf_key"}
+    headers = {"Authorization": f"Bearer key"}
     data = {"inputs": system_prompt + user_prompt}
     response = requests.post(API_URL, headers=headers, json=data)
     return response.json()[0]["generated_text"]

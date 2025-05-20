@@ -27,7 +27,7 @@ openai.api_key = ""
 def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-3.1-8B-Instruct"):
     
     API_URL = "https://api-inference.huggingface.co/models/" + model_id
-    headers = {"Authorization": f"Bearer hf key"}
+    headers = {"Authorization": f"Bearer key"}
     data = {"inputs": system_prompt + user_prompt}
     response = requests.post(API_URL, headers=headers, json=data)
     return response.json()[0]["generated_text"]

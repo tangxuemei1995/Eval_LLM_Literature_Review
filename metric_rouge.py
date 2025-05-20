@@ -23,7 +23,7 @@ from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-3.1-8B-Instruct"):
     
     API_URL = "https://api-inference.huggingface.co/models/" + model_id
-    headers = {"Authorization": f"Bearer hf_key"}
+    headers = {"Authorization": f"Bearer key"}
     data = {"inputs": system_prompt + user_prompt}
     response = requests.post(API_URL, headers=headers, json=data)
     return response.json()[0]["generated_text"]
@@ -96,8 +96,6 @@ def compute_bleu(json_files, model_id):
             # save_path = file.replace('./clean','./nli_data')
             if not os.path.exists('/'.join(save_path_nli.split('/')[0:-1])):
                 os.makedirs('/'.join(save_path_nli.split('/')[0:-1]))
-            # "./clean/./llm3/meta-llama_Meta-Llama-3.1-8B-Instruct/data/immunol/Volume 20 (2002)/10.1146_annurev.immunol.20.090501.112049_content.json"
-            # print("#########################################" + file + "##############################################" )
             abstract_file = file.replace("./t2/" + model_id, "./clean")
             context = read_json_file(abstract_file)
             abstract1 = context["context"]["ABSTRACT"]
