@@ -13,8 +13,7 @@ import openai
 import anthropic
 from dashscope import Generation
 from openai import OpenAI
-openai.api_key = "your key" 
-
+os.getenv("OPENAI_API_KEY")
 f = open('./prompts/prompts1.txt', 'r', encoding='utf-8')
 system_prompt_1 = f.read().strip()
 
@@ -57,7 +56,7 @@ def qw_api(system_prompt, user_prompt):
         {'role': 'user', 'content': user_prompt}
         ]
     response = Generation.call(
-        api_key="your key", 
+        api_key=os.getenv("Qwen_KEY"), 
         model="qwen2.5-72b-instruct",   # model list：https://help.aliyun.com/zh/model-studio/getting-started/models
         messages=messages,
         temperature=0,
@@ -122,7 +121,7 @@ def huggingface_api_format(system_prompt, user_prompt, model_id="meta-llama/Meta
     }
 
 
-    client = InferenceClient(api_key="your huggingface key")
+    client = InferenceClient(api_key=os.getenv("Huggingface_KEY"))
     try:
         completion = client.chat.completions.create(
             model= model_id, 
@@ -149,7 +148,7 @@ def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-
         { "role": "user", "content": user_prompt}
     ]
    
-    client = InferenceClient(api_key="your huggingfacr key")
+    client = InferenceClient(api_key=os.getenv("Huggingface_KEY"))
     try:
         completion = client.chat.completions.create(
             model= model_id, 
@@ -196,7 +195,7 @@ def gpt_4o_old(system_prompt, user_prompt):
 def gpt(system_prompt, user_prompt):
 
     ''' 调用gpt3.5 0.006$/1K token'''
-    client = OpenAI(api_key="you GPT key")
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -216,7 +215,7 @@ def gpt(system_prompt, user_prompt):
 
 def claude(system_prompt, user_prompt):
 
-    client = anthropic.Anthropic(api_key="your claude key")
+    client = anthropic.Anthropic(api_key=os.getenv("CLAUDE_API_KEY"))
 
     message = client.messages.create(
         model="claude-3-5-sonnet-20240620",
@@ -232,7 +231,7 @@ def claude(system_prompt, user_prompt):
     return text[0]
 
 def deepseek(system_prompt, user_prompt):
-    client = OpenAI(api_key="your deepseek key", base_url="https://api.deepseek.com")
+    client = OpenAI(api_key=os.getenv("DEEPSEEK_API_KEY"), base_url="https://api.deepseek.com")
 
     response = client.chat.completions.create(
         model="deepseek-chat",

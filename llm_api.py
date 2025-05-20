@@ -7,7 +7,7 @@ from huggingface_hub import login
 from huggingface_hub import InferenceClient
 import google.generativeai as genai
 import openai
-openai.api_key = ""
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 
@@ -44,48 +44,12 @@ def find_json_files(directory):
 def huggingface_api(system_prompt, user_prompt, model_id="meta-llama/Meta-Llama-3.1-8B-Instruct"):
     
     API_URL = "https://api-inference.huggingface.co/models/" + model_id
-    headers = {"Authorization": f"Bearer key"}
+    headers = {"Authorization": f""}
     data = {"inputs": system_prompt + user_prompt}
     response = requests.post(API_URL, headers=headers, json=data)
     return response.json()[0]["generated_text"]
 
 
-def geni(system_prompt, user_prompt):
-    genai.configure(api_key=os.getenv('GOOGLE_AI_API_KEY'))
-    generation_config = {
-        "temperature": 0,
-        "top_p": 0.95, # cannot change
-        "top_k": 0,
-        "max_output_tokens": 250,
-    }
-    safety_settings = [
-        {
-            "category": "HARM_CATEGORY_HARASSMENT",
-            "threshold": "BLOCK_NONE"
-        },
-        {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_NONE"
-        },
-        {
-            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-            "threshold": "BLOCK_NONE"
-        },
-        {
-            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-            "threshold": "BLOCK_NONE"
-        },
-    ]
-    model = genai.GenerativeModel(model_name="gemini-1.5-pro-exp-0827",
-                        generation_config=generation_config,
-                        system_instruction=system_prompt,
-                        safety_settings=safety_settings)
-    convo = model.start_chat(history=[])
-    convo.send_message(user_prompt)
-    # print(convo.last)
-    result = convo.last.text
-    print(result)
-    return result
 
 
 def gpt(system_prompt, user_prompt):
