@@ -17,7 +17,9 @@ from figure import plot_json_disciline,plot_json_disciline_all_models,plot_radar
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-
+'''
+根据evaluate.py中的比较结果，计算最后的幻觉结果
+'''
 def save_to_csv(data, filename, title= ['Journal Name', 'Title acc', "Overall hallu score"]):
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)

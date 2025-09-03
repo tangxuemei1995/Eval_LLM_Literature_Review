@@ -2,7 +2,7 @@ import re
 
 def normalize_author_name_for_generated(name):
     """
-    Normalize author names to the format: [Last Name] [First Initial(s)] (e.g., 'Smith J' or 'Li XK')
+    将作者名字规范化，返回姓氏和名字首字母的形式。
     """
     # 去除名字中的多余空格
     name = name.strip()

@@ -9,7 +9,8 @@ This project evaluates the performance of large language models (LLMs) on three 
 3. **Review Composition**
 
 ## Data Access
-The dataset is currently hosted on Google Drive. The download link will be made publicly available upon paper acceptance.
+The dataset is currently hosted on Google Drive. The download link as follows.
+https://drive.google.com/file/d/1ZlJ4zldIX3WdVgtv5uPS-rb3QZlafdCx/view?usp=sharing
 
 ## Instructions
 
@@ -125,9 +126,15 @@ python evaluate\_t3\_kpr.py
 ---
 
 ## Citation  
-(To be added upon paper acceptance.)
 ```
-
----
+@misc{tang2025largelanguagemodelsautomated,
+      title={Large Language Models for Automated Literature Review: An Evaluation of Reference Generation, Abstract Writing, and Review Composition}, 
+      author={Xuemei Tang and Xufeng Duan and Zhenguang G. Cai},
+      year={2025},
+      eprint={2412.13612},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2412.13612}, 
+}
 
 
